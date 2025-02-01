@@ -7,6 +7,8 @@
 *.log
 *.out
 *.swp
+/migrations
+
 
 # Игнорируем файлы зависимостей Go
 go.sum
