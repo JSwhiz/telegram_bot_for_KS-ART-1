@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список заявок</title>
+</head>
+<body>
+    <h1>Список заявок</h1>
+    <table border="1">
+        <tr>
+            <th>Название услуги</th>
+            <th>Описание</th>
+            <th>Статус</th>
+            <th>Изменить статус</th>
+        </tr>
+        {{range .}}
+        <tr>
+            <td>{{.ServiceName}}</td>
+            <td>{{.Description}}</td>
+            <td>{{.Status}}</td>
+            <td>
+                <form method="post" action="/update-status/{{.ID}}">
+                    <label for="status">Статус:</label>
+                    <select id="status" name="status">
+                        <option value="new">Новый</option>
+                        <option value="in_progress">В процессе</option>
+                        <option value="completed">Завершен</option>
+                    </select>
+                    <button type="submit">Изменить статус</button>
+                </form>
+                
+            </td>
+        </tr>
+        {{end}}
+    </table>
+</body>
+</html>
