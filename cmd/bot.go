@@ -46,6 +46,11 @@ func main() {
 			if update.Message.Text == "/start" {
 				sendWelcomeMessage(bot, update.Message.Chat.ID)
 			}
+
+			// Обработка обычных текстовых сообщений, включая описание заявки
+			if update.Message.Text != "" {
+				handlers.HandleDescription(bot, update, requestRepository)
+			}
 		}
 
 		// Обрабатываем callback-запросы
